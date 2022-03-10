@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/alteraEmpresa" var="linkServletNovaEmpresa"/>
+<c:url value="/entrada" var="linkEntradaServlet"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<c:import url="logout-parcial.jsp"/>
 	
-	<form action="${linkServletNovaEmpresa}" method="post">
+	Usuario Logado: ${usuarioLogado.login }
+		<br>
+		<br>
+		<br>
+	
+	<form action="${linkEntradaServlet}" method="post">
 	 
 	 <label> Name: </label>
 	 <input type= "text" name="nome" value="${empresa.nome }">
@@ -17,9 +24,13 @@
 	 <label> Data Abertura: </label>
 	 <input type= "text" name="data" value="<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>" >
 	 <input type="hidden" name="id" value="${empresa.id }">
+	  <input type="hidden" name="acao" value="AlteraEmpresa">
 	 <input type="submit"> 
 	 
 	</form>
-		<a href="/gerenciador/listaEmpresas">Voltar</a></li> 
+	<br>
+		<br>
+		<br>
+		<a href="/gerenciador/entrada?acao=ListaEmpresas">Voltar</a>
 </body>
 </html>
